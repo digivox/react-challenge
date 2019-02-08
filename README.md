@@ -20,11 +20,10 @@ Criar uma API REST para gerenciamento de uma loja que aluga itens. Através dest
  - Dashboard com informações sobre: 
   - Itens a serem devolvidos no período semanal, com seus valores;
   - Itens alugados no período semanal, com seus valores;
- - Relatório gerencial de veículos alugados com somatórios dos pagamentos
 
 OBS: Para o serviço de reserva, o item será disponibilizado ao cliente em uma data agendada (ou seja, um agendamento) enquanto no de aluguel do item ele é disponibilizado no exato momento da solicitação.
 
-## Tecnologias Utilizadas
+## Tecnologias Obrigatórias
 
  - JDK 1.8+;
  - Maven 3.3+;
