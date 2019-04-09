@@ -1,4 +1,4 @@
-# Desafio loja de aluguel - React
+# Desafio loja de aluguel de livros - React
 
 ## Oportunidade
 
@@ -6,30 +6,31 @@ Olá! Temos uma oportunidade para desenvolvedor na Digivox e gostaríamos que vo
 
 ## Detalhamento do desafio
 
-Criar uma API REST para gerenciamento de uma loja que aluga itens. Através destes serviços a empresa poderá manter o cadastro dos seus tipos de item, itens, clientes, aluguéis e acompanhar em um dashboard o que está sendo devolvido e alugado em tempo real.
+Criar uma API REST para gerenciamento de uma loja que aluga livros. Através destes serviços a empresa poderá manter o cadastro dos livros, clientes, aluguéis e acompanhar em um dashboard o que está sendo devolvido e alugado em tempo real.
 
 ## Serviços a serem criados:
 
- - Manter Tipo de item;
- - Manter Item;
+ - Manter livro;
  - Manter cliente;
- - Reservar de item;
+ - Reservar de livro;
  - Cancelar reserva;
- - Alugar item;
- - Devolução de item;
+ - Alugar livro;
+ - Devolução de livro;
  - Dashboard com informações sobre: 
-  - Itens a serem devolvidos no período semanal, com seus valores;
-  - Itens alugados no período semanal, com seus valores;
+  - Livros a serem devolvidos no período semanal, com seus valores;
+  - Livros alugados no período semanal, com seus valores;
 
-OBS: Para o serviço de reserva, o item será disponibilizado ao cliente em uma data agendada (ou seja, um agendamento) enquanto no de aluguel do item ele é disponibilizado no exato momento da solicitação.
+OBS: Para o serviço de reserva, o livro será disponibilizado ao cliente em uma data agendada (ou seja, um agendamento) enquanto no de aluguel do livro ele é disponibilizado no exato momento da solicitação.
 
-## Tecnologias Obrigatórias
+## Tecnologias Desejáveis
 
  - JDK 1.8+;
  - Maven 3.3+;
  - Banco de dados Postgres;
  - Framework Spring Boot;
  - React
+ 
+OBS: Sinta-se à vontade para utilizar outras tecnologias.
 
 ## O que avaliaremos
 
@@ -39,6 +40,6 @@ OBS: Para o serviço de reserva, o item será disponibilizado ao cliente em uma 
 
 ## Instruções
 
-1. Após o envio do desafio você terá 3 dias para desenvolver. Seja criativo! Utilize as ferramentas e frameworks ao seu favor.
+1. Após o envio do desafio você terá 5 dias para desenvolver. Seja criativo! Utilize as ferramentas e frameworks ao seu favor.
 2. Atualize o README.MD do projeto e detalhe as etapas para que a aplicação execute com sucesso.
 3. Após finalizado envie o projeto zipado para o e-mail dev-challenges@digivox.com.br.
