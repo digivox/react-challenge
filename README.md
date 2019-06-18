@@ -42,4 +42,4 @@ OBS: Sinta-se à vontade para utilizar outras tecnologias.
 
 1. Após o envio do desafio você terá 5 dias para desenvolver. Seja criativo! Utilize as ferramentas e frameworks ao seu favor.
 2. Atualize o README.MD do projeto e detalhe as etapas para que a aplicação execute com sucesso.
-3. Após finalizado envie o projeto zipado para o e-mail dev-challenges@digivox.com.br.
+3. Após finalizado envie um e-mail para dev-challenges@digivox.com.br, informando onde o projeto está hospedado.
