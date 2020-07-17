@@ -2,7 +2,7 @@
 
 ## Oportunidade
 
-Olá! Temos uma oportunidade de estágio para desenvolvedor na Digivox e gostaríamos que você participasse do nosso processo seletivo. Ao fim do processo, você receberá um feedback do nosso time com o resultado. 😃
+Olá! Temos uma oportunidade de desenvolvedor na Digivox e gostaríamos que você participasse do nosso processo seletivo. Ao fim do processo, você receberá um feedback do nosso time com o resultado. 😃
 
 ## Detalhamento do desafio
 
