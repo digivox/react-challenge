@@ -1,0 +1,21 @@
+<form [formGroup]="formCliente" (ngSubmit)="onSubmit()">
+    <div style="width: 30%; margin: auto;">
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" name="nome" id="nome" formControlName="nome" required>
+        </div>
+        <div class="form-group">
+            <label for="dataNascimento">Data de nascimento</label>
+            <input type="date" class="form-control" name="dataNascimento" formControlName="dataNascimento"
+                id="dataNascimento">
+        </div>
+
+        <div class="form-group">
+            <label for="cpf">CPF</label>
+            <input class="form-control" name="cpf" formControlName="cpf" id="cpf">
+        </div>
+
+        <input type="submit" class="btn btn-primary mt-4" value="Salvar">
+        <a href="#" class="btn btn-secondary mt-4 ml-2">Cancelar</a>
+    </div>
+</form>

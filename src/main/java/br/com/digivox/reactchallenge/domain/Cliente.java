@@ -25,9 +25,8 @@ public class Cliente implements Serializable{
 		
 	}
 	
-	public Cliente(int id, String nome, Date dataDeNascimento, String cpf, Date dataDeRegistro) {
+	public Cliente(String nome, Date dataDeNascimento, String cpf, Date dataDeRegistro) {
 		super();
-		this.id = id;
 		this.nome = nome;
 		this.dataDeNascimento = dataDeNascimento;
 		this.cpf = cpf;
@@ -38,31 +37,34 @@ public class Cliente implements Serializable{
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public String getNome() {
 		return nome;
 	}
+	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
 	public Date getDataDeNascimento() {
 		return dataDeNascimento;
 	}
+	
 	public void setDataDeNascimento(Date dataDeNascimento) {
 		this.dataDeNascimento = dataDeNascimento;
 	}
+	
 	public String getCpf() {
 		return cpf;
 	}
+	
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+	
 	public Date getDataDeRegistro() {
 		return dataDeRegistro;
 	}
+	
 	public void setDataDeRegistro(Date dataDeRegistro) {
 		this.dataDeRegistro = dataDeRegistro;
 	}
