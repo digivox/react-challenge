@@ -1,5 +1,7 @@
 package br.com.digivox.reactchallenge.services;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,7 @@ public class ClienteService {
 	private ClienteRepository clienteRepository;
 	
 	public Cliente addCliente(Cliente cliente) {
+		cliente.setDataDeRegistro(new Date());
 		return clienteRepository.save(cliente);	 
 	}
 	

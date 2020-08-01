@@ -1,5 +1,4 @@
-<form [formGroup]="formCliente" (ngSubmit)="onSubmit()">
-    <div style="width: 30%; margin: auto;">
+<form id="formCliente" [formGroup]="formCliente" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="nome">Nome</label>
             <input type="text" class="form-control" name="nome" id="nome" formControlName="nome" required>
@@ -17,5 +16,4 @@
 
         <input type="submit" class="btn btn-primary mt-4" value="Salvar">
         <a href="#" class="btn btn-secondary mt-4 ml-2">Cancelar</a>
-    </div>
 </form>
