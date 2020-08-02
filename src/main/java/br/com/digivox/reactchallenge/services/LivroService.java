@@ -1,11 +1,12 @@
 package br.com.digivox.reactchallenge.services;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.digivox.reactchallenge.domain.Livro;
+import br.com.digivox.reactchallenge.enums.LivroStatus;
 import br.com.digivox.reactchallenge.repositories.LivroRepository;
 import javassist.tools.rmi.ObjectNotFoundException;
 
@@ -19,10 +20,15 @@ public class LivroService {
 		return livroRepository.save(livro);
 	}
 	
-	public Livro findByLivroId(Integer livroId) throws ObjectNotFoundException {	
-		Optional<Livro> livro =  livroRepository.findById(livroId);
-		return livro.orElseThrow(() -> new ObjectNotFoundException(
-				"Livro com o id " + livroId + " não encontrado")); 
+	public List<Livro> findAllByCodigoISBN(String isbn) throws ObjectNotFoundException {	
+		return livroRepository.findAllByCodigoISBN(isbn);
 	}
-
+	
+	public List<Livro> listAll() {
+		return livroRepository.findAll();
+	}
+	
+	public List<Livro> listAllDisponiveis() {
+		return livroRepository.findAllByStatus(LivroStatus.DISPONIVEL);
+	}
 }

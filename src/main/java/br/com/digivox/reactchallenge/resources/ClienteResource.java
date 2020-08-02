@@ -1,6 +1,7 @@
 package br.com.digivox.reactchallenge.resources;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,11 +24,17 @@ public class ClienteResource {
 	
 	@CrossOrigin
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public ResponseEntity<Object> addCliente(@RequestBody Cliente cliente) {
+	public ResponseEntity<?> addCliente(@RequestBody Cliente cliente) {
 		cliente = clienteService.addCliente(cliente);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(cliente.getId()).toUri();
 		return ResponseEntity.created(uri).build();
+	}
+	
+	@RequestMapping(value = "/listall", method = RequestMethod.GET)
+	public ResponseEntity<?> listAll() {
+		List<Cliente> clientes = clienteService.listAll();
+		return ResponseEntity.ok(clientes);
 	}
 
 }

@@ -14,44 +14,34 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Reserva implements Serializable{
+public class Aluguel implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Livro> livros;
-
 	@ManyToOne
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 	
-	private Date dataDeCriacao;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Livro> livros;
 	
-	private Date dataDeRetirada;
+	private Date dataDeCriacao;
 	
 	private Date dataDeEntrega;
 	
-	public Reserva() {
+	public Aluguel() {
 		
 	}
 
-	public Reserva(List<Livro> livros, Cliente cliente, Date dataDeCriacao, Date dataDeRetirada, Date dataDeEntrega) {
+	public Aluguel(Cliente cliente, List<Livro> livros, Date dataDeCriacao, Date dataDeEntrega) {
 		super();
-		this.livros = livros;
 		this.cliente = cliente;
-		this.dataDeCriacao = dataDeCriacao;
-		this.dataDeRetirada = dataDeRetirada;
-	}
-
-	public List<Livro> getLivros() {
-		return livros;
-	}
-
-	public void setLivros(List<Livro> livros) {
 		this.livros = livros;
+		this.dataDeCriacao = dataDeCriacao;
+		this.dataDeEntrega = dataDeEntrega;
 	}
 
 	public Cliente getCliente() {
@@ -62,6 +52,14 @@ public class Reserva implements Serializable{
 		this.cliente = cliente;
 	}
 
+	public List<Livro> getLivros() {
+		return livros;
+	}
+
+	public void setLivros(List<Livro> livros) {
+		this.livros = livros;
+	}
+
 	public Date getDataDeCriacao() {
 		return dataDeCriacao;
 	}
@@ -70,24 +68,16 @@ public class Reserva implements Serializable{
 		this.dataDeCriacao = dataDeCriacao;
 	}
 
-	public Date getDataDeRetirada() {
-		return dataDeRetirada;
-	}
-
-	public void setDataDeRetirada(Date dataDeRetirada) {
-		this.dataDeRetirada = dataDeRetirada;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
 	public Date getDataDeEntrega() {
 		return dataDeEntrega;
 	}
 
 	public void setDataDeEntrega(Date dataDeEntrega) {
 		this.dataDeEntrega = dataDeEntrega;
+	}
+
+	public Integer getId() {
+		return id;
 	}
 
 	@Override
@@ -106,7 +96,7 @@ public class Reserva implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Reserva other = (Reserva) obj;
+		Aluguel other = (Aluguel) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -114,5 +104,5 @@ public class Reserva implements Serializable{
 			return false;
 		return true;
 	}
-
+	
 }

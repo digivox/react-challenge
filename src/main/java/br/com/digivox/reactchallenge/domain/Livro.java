@@ -15,23 +15,28 @@ public class Livro implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer id;
 	@Column(nullable = false)
 	private String titulo;
 	private String subtitulo;
-	@Column(columnDefinition = "int default 1")
-	private Integer status;
+	@Column(columnDefinition = "int default 0")
+	private LivroStatus status;
+	@Column(nullable = false)
+	private String codigoISBN;
 	
 	public Livro () {
 		
 	}
-	public Livro(String titulo, String subtitulo, LivroStatus status) {
+	
+	public Livro(String titulo, String subtitulo, LivroStatus status, String codigoISBN) {
 		super();
 		this.titulo = titulo;
 		this.subtitulo = subtitulo;
-		this.status = status.getCodigo();
+		this.status = status;
+		this.codigoISBN = codigoISBN;
 	}
+
 	public long getId() {
 		return id;
 	}
@@ -53,11 +58,19 @@ public class Livro implements Serializable{
 	}
 
 	public LivroStatus getStatus() {
-		return LivroStatus.toEnum(status);
+		return status;
 	}
 
 	public void setStatus(LivroStatus status) {
-		this.status = status.getCodigo();
+		this.status = status;
+	}
+
+	public String getCodigoISBN() {
+		return codigoISBN;
+	}
+
+	public void setCodigoISBN(String codigoISBN) {
+		this.codigoISBN = codigoISBN;
 	}
 
 	@Override
