@@ -4,6 +4,7 @@ import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,7 +21,8 @@ public class ClienteResource {
 	@Autowired
 	private ClienteService clienteService;
 	
-	@RequestMapping(value = "/add/cliente", method = RequestMethod.POST)
+	@CrossOrigin
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public ResponseEntity<Object> addCliente(@RequestBody Cliente cliente) {
 		cliente = clienteService.addCliente(cliente);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()

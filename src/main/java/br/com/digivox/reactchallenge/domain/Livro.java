@@ -1,29 +1,37 @@
 package br.com.digivox.reactchallenge.domain;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import br.com.digivox.reactchallenge.enums.LivroStatus;
+
 @Entity
-public class Livro {
+public class Livro implements Serializable{
+	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
+	@Column(nullable = false)
 	private String titulo;
 	private String subtitulo;
+	@Column(columnDefinition = "int default 1")
+	private Integer status;
 	
 	public Livro () {
 		
 	}
-	
-	public Livro(String titulo, String subtitulo) {
+	public Livro(String titulo, String subtitulo, LivroStatus status) {
 		super();
 		this.titulo = titulo;
 		this.subtitulo = subtitulo;
+		this.status = status.getCodigo();
 	}
-
 	public long getId() {
 		return id;
 	}
@@ -42,6 +50,14 @@ public class Livro {
 	
 	public void setSubtitulo(String subtitulo) {
 		this.subtitulo = subtitulo;
+	}
+
+	public LivroStatus getStatus() {
+		return LivroStatus.toEnum(status);
+	}
+
+	public void setStatus(LivroStatus status) {
+		this.status = status.getCodigo();
 	}
 
 	@Override
