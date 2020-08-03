@@ -24,7 +24,7 @@ public class AluguelService {
 	public Aluguel createAluguel(Aluguel aluguel) {
 		
 		for(Livro livro : aluguel.getLivros()) {
-			livro.setStatus(LivroStatus.RESERVADO);
+			livro.setStatus(LivroStatus.EM_UTILIZACAO);
 			livroService.update(livro);
 		}
 		

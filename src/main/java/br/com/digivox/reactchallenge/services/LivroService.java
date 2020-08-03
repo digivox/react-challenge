@@ -33,7 +33,12 @@ public class LivroService {
 		return livroRepository.findAllByStatus(LivroStatus.DISPONIVEL);
 	}
 	
-	public void update(Livro livro) {
-		livroRepository.saveAndFlush(livro);
+	public Livro atualizaStatus(Livro livro, LivroStatus novoStatus) {
+		livro.setStatus(novoStatus);
+		return update(livro);
+	}
+	
+	public Livro update(Livro livro) {
+		return livroRepository.saveAndFlush(livro);
 	}
 }

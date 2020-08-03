@@ -31,7 +31,7 @@ public class BibliotecaResource {
 	private BibliotecaService bibliotecaService;
 	
 	@CrossOrigin
-	@RequestMapping(value = "/createreserva", method = RequestMethod.POST)
+	@RequestMapping(value = "/reservar", method = RequestMethod.POST)
 	public ResponseEntity<?> createReserva(@RequestBody Reserva reserva) {
 		reserva = reservaService.createReserva(reserva);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -39,7 +39,7 @@ public class BibliotecaResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@RequestMapping(value = "/createaluguel", method = RequestMethod.POST)
+	@RequestMapping(value = "/aluguar", method = RequestMethod.POST)
 	public ResponseEntity<?> createReserva(@RequestBody Aluguel aluguel) {
 		aluguel = aluguelService.createAluguel(aluguel);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -47,17 +47,23 @@ public class BibliotecaResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
-	@RequestMapping(value = "/cancelarreserva", method = RequestMethod.POST)
+	@RequestMapping(value = "/cancelar/reserva", method = RequestMethod.POST)
 		public ResponseEntity<?> cancelarReserva(@RequestBody Reserva reserva) {
 		reserva = reservaService.cancelarReserva(reserva);
 		return ResponseEntity.ok(reserva);
 	}
 	
-	@RequestMapping(value = "/devolverlivro", method = RequestMethod.POST)
-	public ResponseEntity<?> devolverLivro(@RequestBody String reservaOuAluguelInfo) {
-		bibliotecaService.devolverLivro(reservaOuAluguelInfo);
+	@RequestMapping(value = "/devolver/livroalugado", method = RequestMethod.POST)
+	public ResponseEntity<?> devolverLivroAlugado(@RequestBody Aluguel aluguel) {
+		bibliotecaService.devolverLivro(null, aluguel);
 		return (ResponseEntity<?>) ResponseEntity.ok();
-}
+	}
+	
+	@RequestMapping(value = "/devolver/livroreservado", method = RequestMethod.POST)
+	public ResponseEntity<?> devolverLivroAlugado(@RequestBody Reserva reserva) {
+		bibliotecaService.devolverLivro(reserva, null);
+		return (ResponseEntity<?>) ResponseEntity.ok();
+	}
 
 
 }
