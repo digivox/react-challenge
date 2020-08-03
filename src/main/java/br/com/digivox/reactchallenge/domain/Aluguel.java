@@ -4,14 +4,15 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
+import br.com.digivox.reactchallenge.enums.AluguelStatus;
 
 @Entity
 public class Aluguel implements Serializable{
@@ -25,23 +26,30 @@ public class Aluguel implements Serializable{
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@ManyToMany
 	private List<Livro> livros;
 	
 	private Date dataDeCriacao;
 	
-	private Date dataDeEntrega;
+	private Date dataDeRetirada;
+	
+	private Date dataDeDevolucao;
+	
+	private Date dataPrevistaParaDevolucao;
+	
+	private AluguelStatus status;
 	
 	public Aluguel() {
 		
 	}
 
-	public Aluguel(Cliente cliente, List<Livro> livros, Date dataDeCriacao, Date dataDeEntrega) {
+	public Aluguel(Cliente cliente, List<Livro> livros, Date dataDeCriacao, Date dataDeRetirada, Date dataDeDevolucao) {
 		super();
 		this.cliente = cliente;
 		this.livros = livros;
 		this.dataDeCriacao = dataDeCriacao;
-		this.dataDeEntrega = dataDeEntrega;
+		this.dataDeRetirada = dataDeRetirada;
+		this.dataDeDevolucao = dataDeDevolucao;
 	}
 
 	public Cliente getCliente() {
@@ -68,16 +76,40 @@ public class Aluguel implements Serializable{
 		this.dataDeCriacao = dataDeCriacao;
 	}
 
-	public Date getDataDeEntrega() {
-		return dataDeEntrega;
+	public Date getDataDeRetirada() {
+		return dataDeRetirada;
 	}
 
-	public void setDataDeEntrega(Date dataDeEntrega) {
-		this.dataDeEntrega = dataDeEntrega;
+	public void setDataDeRetirade(Date dataDeretirada) {
+		this.dataDeRetirada = dataDeretirada;
 	}
 
 	public Integer getId() {
 		return id;
+	}
+
+	public Date getDataDeDevolucao() {
+		return dataDeDevolucao;
+	}
+
+	public void setDataDeDevolucao(Date dataDeDevolucao) {
+		this.dataDeDevolucao = dataDeDevolucao;
+	}
+
+	public AluguelStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(AluguelStatus status) {
+		this.status = status;
+	}
+
+	public Date getDataPrevistaParaDevolucao() {
+		return dataPrevistaParaDevolucao;
+	}
+
+	public void setDataPrevistaParaDevolucao(Date dataPrevistaParaDevolucao) {
+		this.dataPrevistaParaDevolucao = dataPrevistaParaDevolucao;
 	}
 
 	@Override

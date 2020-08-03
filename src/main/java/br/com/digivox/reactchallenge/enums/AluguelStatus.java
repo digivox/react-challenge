@@ -1,15 +1,15 @@
 package br.com.digivox.reactchallenge.enums;
 
-public enum ReservaStatus {
+public enum AluguelStatus {
 	
-	CRIADA("Criada"),
 	EM_ANDAMENTO("Em andamento"),
-	FINALIZADA("Finalizada"),
-	CANCELADA("Cancelada");
+	RESERVADO("Reservado"),
+	FINALIZADA("Finalizado"),
+	CANCELADO("Cancelado");
 	
 	private String descricao;
 	
-	private ReservaStatus(String descricao) {
+	private AluguelStatus(String descricao) {
 		this.descricao = descricao;
 	}
 

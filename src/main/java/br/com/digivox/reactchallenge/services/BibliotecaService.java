@@ -1,39 +1,33 @@
 package br.com.digivox.reactchallenge.services;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.digivox.reactchallenge.domain.Aluguel;
 import br.com.digivox.reactchallenge.domain.Livro;
-import br.com.digivox.reactchallenge.domain.Reserva;
+import br.com.digivox.reactchallenge.enums.AluguelStatus;
 import br.com.digivox.reactchallenge.enums.LivroStatus;
-import br.com.digivox.reactchallenge.enums.ReservaStatus;
 
 @Service
 public class BibliotecaService {
 	
 	@Autowired
-	private ReservaService reservaService;
+	private LivroService livroService;
 	
 	@Autowired
-	private LivroService livroService;
-
-	public void devolverLivro(Reserva reserva, Aluguel aluguel) {
-		if(reserva != null) {
-			
-			for(Livro livro : reserva.getLivros()) {
-				livroService.atualizaStatus(livro, LivroStatus.DISPONIVEL);
-			}
-			
-			reservaService.atualizaStatus(reserva, ReservaStatus.FINALIZADA);
-			
-		} else {
-			
-			for(Livro livro : aluguel.getLivros()) {
-				livroService.atualizaStatus(livro, LivroStatus.DISPONIVEL);
-			}
-			
-		}	
+	private AluguelService aluguelService;
+	
+	public Aluguel devolverLivroAlugado(Aluguel aluguel) {
+		for(Livro livro : aluguel.getLivros()) {
+			livroService.atualizaStatus(livro, LivroStatus.DISPONIVEL);
+		}
+		
+		aluguel.setDataDeDevolucao(new Date());
+		aluguel.setStatus(AluguelStatus.FINALIZADA);
+		
+		return aluguelService.update(aluguel);
 	}
-
+	
 }
