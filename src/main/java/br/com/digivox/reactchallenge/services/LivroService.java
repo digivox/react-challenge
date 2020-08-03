@@ -17,6 +17,7 @@ public class LivroService {
 	private LivroRepository livroRepository;
 	
 	public Livro addLivro(Livro livro) {
+		livro.setStatus(LivroStatus.DISPONIVEL);
 		return livroRepository.save(livro);
 	}
 	
@@ -30,5 +31,9 @@ public class LivroService {
 	
 	public List<Livro> listAllDisponiveis() {
 		return livroRepository.findAllByStatus(LivroStatus.DISPONIVEL);
+	}
+	
+	public void update(Livro livro) {
+		livroRepository.saveAndFlush(livro);
 	}
 }

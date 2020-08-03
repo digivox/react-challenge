@@ -15,7 +15,7 @@ public class Livro implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column(nullable = false)
 	private String titulo;
@@ -37,7 +37,7 @@ public class Livro implements Serializable{
 		this.codigoISBN = codigoISBN;
 	}
 
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
 

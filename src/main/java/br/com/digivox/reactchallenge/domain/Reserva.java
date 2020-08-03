@@ -4,24 +4,25 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
+import br.com.digivox.reactchallenge.enums.ReservaStatus;
 
 @Entity
 public class Reserva implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@ManyToMany
 	private List<Livro> livros;
 
 	@ManyToOne
@@ -34,16 +35,21 @@ public class Reserva implements Serializable{
 	
 	private Date dataDeEntrega;
 	
+	private ReservaStatus status;
+	
 	public Reserva() {
 		
 	}
 
-	public Reserva(List<Livro> livros, Cliente cliente, Date dataDeCriacao, Date dataDeRetirada, Date dataDeEntrega) {
+	public Reserva(List<Livro> livros, Cliente cliente, Date dataDeCriacao, Date dataDeRetirada, Date dataDeEntrega,
+			ReservaStatus status) {
 		super();
 		this.livros = livros;
 		this.cliente = cliente;
 		this.dataDeCriacao = dataDeCriacao;
 		this.dataDeRetirada = dataDeRetirada;
+		this.dataDeEntrega = dataDeEntrega;
+		this.status = status;
 	}
 
 	public List<Livro> getLivros() {
@@ -88,6 +94,14 @@ public class Reserva implements Serializable{
 
 	public void setDataDeEntrega(Date dataDeEntrega) {
 		this.dataDeEntrega = dataDeEntrega;
+	}
+
+	public ReservaStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(ReservaStatus status) {
+		this.status = status;
 	}
 
 	@Override
