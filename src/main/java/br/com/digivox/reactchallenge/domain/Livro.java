@@ -24,17 +24,19 @@ public class Livro implements Serializable{
 	private LivroStatus status;
 	@Column(nullable = false)
 	private String codigoISBN;
+	private String nomeDoAutor;
 	
 	public Livro () {
 		
 	}
 	
-	public Livro(String titulo, String subtitulo, LivroStatus status, String codigoISBN) {
+	public Livro(String titulo, String subtitulo, LivroStatus status, String codigoISBN, String nomeDoAutor) {
 		super();
 		this.titulo = titulo;
 		this.subtitulo = subtitulo;
 		this.status = status;
 		this.codigoISBN = codigoISBN;
+		this.nomeDoAutor = nomeDoAutor;
 	}
 
 	public Integer getId() {
@@ -72,6 +74,16 @@ public class Livro implements Serializable{
 	public void setCodigoISBN(String codigoISBN) {
 		this.codigoISBN = codigoISBN;
 	}
+
+	public String getNomeDoAutor() {
+		return nomeDoAutor;
+	}
+	
+
+	public void setNomeDoAutor(String nomeDoAutor) {
+		this.nomeDoAutor = nomeDoAutor;
+	}
+	
 
 	@Override
 	public int hashCode() {
