@@ -1,1 +1,66 @@
+<div class="container">
+    <h2 class="">Livros a serem devolvidos na semana</h2>
+    <mat-table #table [dataSource]="dataSource">
 
+        <ng-container matColumnDef="titulo">
+            <mat-header-cell *matHeaderCellDef>
+                Titulo
+            </mat-header-cell>
+            <mat-cell *matCellDef="let aluguel">
+                {{ aluguel.livro.titulo }}
+
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="subtitulo">
+            <mat-header-cell *matHeaderCellDef>
+                Subtitulo
+            </mat-header-cell>
+            <mat-cell *matCellDef="let aluguel">
+                {{ aluguel.livro.subtitulo }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="nomeCliente">
+            <mat-header-cell *matHeaderCellDef>
+                Nome do cliente
+            </mat-header-cell>
+            <mat-cell *matCellDef="let aluguel">
+                {{ aluguel.cliente.nome }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="cpf">
+            <mat-header-cell *matHeaderCellDef>
+                CPF do cliente
+            </mat-header-cell>
+            <mat-cell *matCellDef="let aluguel">
+                {{ aluguel.cliente.cpf }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="dataDevolucao">
+            <mat-header-cell *matHeaderCellDef>
+                Data de devolução
+            </mat-header-cell>
+            <mat-cell *matCellDef="let aluguel">
+                {{ aluguel.dataPrevistaParaDevolucao }}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <mat-header-cell *matHeaderCellDef>
+                Status do Aluguel
+            </mat-header-cell>
+            <mat-cell *matCellDef="let aluguel">
+                {{ aluguel.status }}
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="colunas"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: colunas;"></mat-row>
+    </mat-table>
+
+    <mat-paginator [length]="totalDevolucoes" [pageSize]="25" (page)="paginar($event)">
+    </mat-paginator>
+</div>

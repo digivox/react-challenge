@@ -2,14 +2,12 @@ package br.com.digivox.reactchallenge.domain;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import br.com.digivox.reactchallenge.enums.AluguelStatus;
@@ -26,8 +24,8 @@ public class Aluguel implements Serializable{
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 	
-	@ManyToMany
-	private List<Livro> livros;
+	@ManyToOne
+	private Livro livro;
 	
 	private Date dataDeCriacao;
 	
@@ -43,10 +41,10 @@ public class Aluguel implements Serializable{
 		
 	}
 
-	public Aluguel(Cliente cliente, List<Livro> livros, Date dataDeCriacao, Date dataDeRetirada, Date dataDeDevolucao) {
+	public Aluguel(Cliente cliente, Livro livro, Date dataDeCriacao, Date dataDeRetirada, Date dataDeDevolucao) {
 		super();
 		this.cliente = cliente;
-		this.livros = livros;
+		this.livro = livro;
 		this.dataDeCriacao = dataDeCriacao;
 		this.dataDeRetirada = dataDeRetirada;
 		this.dataDeDevolucao = dataDeDevolucao;
@@ -60,12 +58,12 @@ public class Aluguel implements Serializable{
 		this.cliente = cliente;
 	}
 
-	public List<Livro> getLivros() {
-		return livros;
+	public Livro getLivro() {
+		return livro;
 	}
 
-	public void setLivros(List<Livro> livros) {
-		this.livros = livros;
+	public void setLivros(Livro livro) {
+		this.livro = livro;
 	}
 
 	public Date getDataDeCriacao() {

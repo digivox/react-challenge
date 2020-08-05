@@ -18,7 +18,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import br.com.digivox.reactchallenge.domain.Aluguel;
-import br.com.digivox.reactchallenge.domain.Livro;
 import br.com.digivox.reactchallenge.enums.AluguelStatus;
 import br.com.digivox.reactchallenge.enums.LivroStatus;
 import br.com.digivox.reactchallenge.repositories.AluguelRepository;
@@ -50,10 +49,7 @@ public class AluguelService {
 					
 			aluguel.setDataPrevistaParaDevolucao(Date.from(dataPrevistaParaDevolucao.atZone(ZoneId.systemDefault()).toInstant()));
 			
-			for(Livro livro : aluguel.getLivros()) {
-				livro.setStatus(LivroStatus.RESERVADO);
-				livroService.update(livro);
-			}
+			livroService.atualizaStatus(aluguel.getLivro(), LivroStatus.RESERVADO);
 			
 			aluguel.setStatus(AluguelStatus.RESERVADO);
 			
@@ -64,10 +60,7 @@ public class AluguelService {
 					
 			aluguel.setDataPrevistaParaDevolucao(Date.from(dataParaDevolucao.atZone(ZoneId.systemDefault()).toInstant()));
 			
-			for(Livro livro : aluguel.getLivros()) {
-				livro.setStatus(LivroStatus.EM_UTILIZACAO);
-				livroService.update(livro);
-			}
+			livroService.atualizaStatus(aluguel.getLivro(), LivroStatus.EM_UTILIZACAO);
 			
 			aluguel.setStatus(AluguelStatus.EM_ANDAMENTO);
 			
@@ -100,9 +93,9 @@ public class AluguelService {
 	}
 	
 	public Aluguel devolverLivroAlugado(Aluguel aluguel) {
-		for(Livro livro : aluguel.getLivros()) {
-			livroService.atualizaStatus(livro, LivroStatus.DISPONIVEL);
-		}
+	
+		livroService.atualizaStatus(aluguel.getLivro(), LivroStatus.DISPONIVEL);
+		
 		
 		aluguel.setDataDeDevolucao(new Date());
 		aluguel.setStatus(AluguelStatus.FINALIZADA);
