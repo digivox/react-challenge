@@ -46,17 +46,17 @@ OBS: Sinta-se à vontade para utilizar outras tecnologias.
 
 ## Como executar
 
-# Pré-requisitos:
+## Pré-requisitos:
 1. Instale a última versão do Node.js disponível em [https://nodejs.org/en/](https://nodejs.org/en/).
 2. Instale a última versão do Angular utilizando o comando: ``npm install -g @angular/cli``.
 3. Instale a última versão do PostgreSQL disponível em [https://www.postgresql.org/download/](https://www.postgresql.org/download/).
 4. Crie um database chamado react_challenge.
 
-# Subindo o frontend:
+## Subindo o frontend:
 1. Navegue até a pasta "frontend" no projeto utilizando o terminal.
 2. Execute o comando na pasta ``ng serve``.
 
-#  Subindo o backend:
+##  Subindo o backend:
 1. Abra o projeto em uma IDE de sua preferência. 
 2. Execute o main localizado na classe "ReactChallengeApplication".
 
