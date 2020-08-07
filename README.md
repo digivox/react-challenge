@@ -43,3 +43,20 @@ OBS: Sinta-se à vontade para utilizar outras tecnologias.
 1. Após o envio do desafio você terá 5 dias para desenvolver. Seja criativo! Utilize as ferramentas e frameworks ao seu favor.
 2. Atualize o README.MD do projeto e detalhe as etapas para que a aplicação execute com sucesso.
 3. Após finalizado envie um e-mail para dev-challenges@digivox.com.br, informando onde o projeto está hospedado.
+
+## Como executar
+
+## Pré-requisitos:
+1. Instale a última versão do Node.js disponível em [https://nodejs.org/en/](https://nodejs.org/en/).
+2. Instale a última versão do Angular utilizando o comando: ``npm install -g @angular/cli``.
+3. Instale a última versão do PostgreSQL disponível em [https://www.postgresql.org/download/](https://www.postgresql.org/download/).
+4. Crie um database chamado react_challenge.
+
+## Subindo o frontend:
+1. Navegue até a pasta "frontend" no projeto utilizando o terminal.
+2. Execute o comando na pasta ``ng serve``.
+
+##  Subindo o backend:
+1. Abra o projeto em uma IDE de sua preferência. 
+2. Execute o main localizado na classe "ReactChallengeApplication".
+
